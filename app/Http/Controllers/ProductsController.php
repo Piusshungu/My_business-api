@@ -10,6 +10,6 @@ use App\Http\Resources\ProductsCollection;
 class ProductsController extends Controller
 {
     public function index(){
-        return new ProductsCollections(Products::all());
+        return new ProductsCollection(Products::all());
     }
 }
