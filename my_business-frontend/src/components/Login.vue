@@ -16,7 +16,7 @@
     </label>
   </div>
 
-  <div class="container" style="background-color:white">
+  <div class="container" style="background-color:gray">
     <button type="button" class="cancelbtn">Cancel</button>
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
@@ -75,7 +75,7 @@ img.avatar {
 
 .container {
   padding: 10px;
-  background-color:whitesmoke;
+  background-color:black;
   width: 400px;
   margin-left:450px;
   border-radius: 4px;
