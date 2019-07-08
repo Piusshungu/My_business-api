@@ -12,11 +12,13 @@ class UsersController extends Controller
             'last_name' => 'required',
             'phone_number' => 'required',
             'email' => 'required',
+            'password' => 'required',
             'location' => 'required'
         );
         $first_name = User::all()->where('first_name', Input::get('first_name'))->firts();
         $last_name = User::all()->where('last_name', Input::get('last_name'))->first();
         $phone_number = User::all()->where('phone_number', Input::get('phone_number'))-first();
+        $password = user::all()->where('password', Input::get('password'))->firts();
         $email = User::all()->where('email', Input::get('email'))-first();
         $location = User::all()->where('location', Input::get('location'))-first();
 
@@ -32,6 +34,7 @@ class UsersController extends Controller
                 "first_name" =>$request->input("first_name"),
                 "last_name" =>$request->input("last_name"),
                 "phone_number" =>$request->input("phone_number"),
+                "password" =>$request->input("password"),
                 "email" =>$request->input("email"),
                 "location" =>$request->input("location")
             );
