@@ -1,27 +1,7 @@
 <template>
-
+  <router-view></router-view>
 </template>
 
 <script>
-import Login from './components/Login.vue'
-const routes = [
-  { path: '/', component: Login },
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  routes
-})
-
-
-export default {
-  name: 'login',
-  components: {
-    Login
-  }
-}
+export default {};
 </script>
-
-<style>
-
-</style>
