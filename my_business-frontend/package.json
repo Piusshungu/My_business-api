@@ -13,6 +13,7 @@
     "vuetify": "^1.5.16"
   },
   "devDependencies": {
+    "@mdi/font": "^3.8.95",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
@@ -20,6 +21,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "material-design-icons-iconfont": "^5.0.1",
     "vue-template-compiler": "^2.6.10"
   }
 }
