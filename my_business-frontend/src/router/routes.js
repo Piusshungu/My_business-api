@@ -10,6 +10,7 @@ import Orders from '@/components/Orders'
 import Products from '@/components/Products'
 import Signin from '@/components/Signin'
 import Signup from '@/components/Signup'
+import AccountSettings from '@/components/AccountSettings'
 
 
 import App from '@/App.vue';
@@ -33,6 +34,11 @@ export default new Router({
         path: '/dailyproductions',
         name: 'Daily Productions',
         component: DailyProductions
+    },
+    {
+        path: '/products',
+        name: '/Products',
+        component: Products
     },
     {
         path: '/expenses',
@@ -69,6 +75,11 @@ export default new Router({
         name: 'Register',
         component: Signup
     },
+    {
+        path: '/account',
+        name: 'Account',
+        component: AccountSettings
+    }
     ],
     mode: 'history'
 })
