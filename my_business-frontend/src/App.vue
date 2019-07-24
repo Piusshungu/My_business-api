@@ -12,7 +12,7 @@
         v-for="item in menuItems"
          :key="item"
          router
-         to="">
+         to="item.link">
           <v-list-tile-action>
             <v-icon>{{item.icon}}</v-icon>
           </v-list-tile-action>
@@ -54,7 +54,7 @@ export default {
         {icon: 'shopping_cart', title: 'Products', link: '/products'},
         {icon: 'contact_mail', title: 'Daily Productions', link: '/dailyproductions'},
         {icon: 'shopping_cart', title: 'Orders', link: '/orders'},
-        {icon: 'attach_money', title: 'Expenditures', link: '/expenditures'},
+        {icon: 'attach_money', title: 'Expenditures', link: '/expenses'},
         {icon: 'settings', title: 'Account setting', link: '/setting'},
         {icon: 'person', title: 'Logout', link: '/logout'}
       ]

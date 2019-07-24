@@ -60,6 +60,11 @@ export default new Router({
         component: Signin
     },
     {
+        path: '/logout',
+        name: 'Logout',
+
+    },
+    {
         path: '/register',
         name: 'Register',
         component: Signup
