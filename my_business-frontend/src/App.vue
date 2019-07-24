@@ -6,99 +6,71 @@
       app
     >
     <v-spacer></v-spacer>
+    
       <v-list dense>
-        <v-list-tile @click="">
+        <v-list-tile 
+        v-for="item in menuItems"
+         :key="item"
+         router
+         to="">
           <v-list-tile-action>
-            <v-icon>home</v-icon>
+            <v-icon>{{item.icon}}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
+            <v-list-tile-title>{{item.title}}</v-list-tile-title>
           </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>shopping_cart</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Products</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>contact_mail</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Daily Productions</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>shopping_cart</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Orders</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>attach_money</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Expenditures</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-            <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>person</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Logout</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-            <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>settings</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Account settings</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        </v-list-tile>  
       </v-list>
 
     </v-navigation-drawer>
 
+    <div id="toolbar">
     <v-toolbar color="#009688" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Application</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn color="#009688">Login
+      <v-btn color="#009688">Logout
           <v-icon>person</v-icon>
       </v-btn>
     </v-toolbar>
+    </div>
+    <main>
+      <router-view></router-view>
+    </main>
 
     </v-app>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      drawer: null
-    }),
-    props: {
-      source: String
+  
+</script>
+<script>
+export default {
+  data(){
+    return{
+      drawer: false,
+      menuItems: [
+        {icon: 'home', title: 'Home', link: '/home'},
+        {icon: 'shopping_cart', title: 'Products', link: '/products'},
+        {icon: 'contact_mail', title: 'Daily Productions', link: '/dailyproductions'},
+        {icon: 'shopping_cart', title: 'Orders', link: '/orders'},
+        {icon: 'attach_money', title: 'Expenditures', link: '/expenditures'},
+        {icon: 'settings', title: 'Account setting', link: '/setting'},
+        {icon: 'person', title: 'Logout', link: '/logout'}
+      ]
     }
   }
+}
 </script>
+
 <style>
 #inspire{
     font-display: robboto;
     margin-top: 10px;
     font-size: xx-small;
+    margin-left: 04%;
+}
+.toolbar{
+    font-size: x-small;
 }
 </style>
