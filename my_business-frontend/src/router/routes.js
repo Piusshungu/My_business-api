@@ -11,12 +11,16 @@ import Products from '@/components/Products'
 import Signin from '@/components/Signin'
 import Signup from '@/components/Signup'
 import AccountSettings from '@/components/AccountSettings'
+import DataTable from 'laravel-vue-datatable';
+import ProductsTable from '@/components/ProductsTable'
 
 
 import App from '@/App.vue';
 
 
 Vue.use(VueRouter)
+
+Vue.use(DataTable);
 
 
 export default new Router({
@@ -38,7 +42,7 @@ export default new Router({
     {
         path: '/products',
         name: '/Products',
-        component: Products
+        component: ProductsTable
     },
     {
         path: '/expenses',

@@ -1,49 +1,90 @@
 <template>
-  <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      fixed
-      app
-    >
-    <v-spacer></v-spacer>
-    
-      <v-list dense>
-        <v-list-tile 
-        v-for="item in menuItems"
-         :key="item"
-         router
-         :to="item.link">
-          <v-list-tile-action>
-            <v-icon>{{item.icon}}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            {{item.title}}
-          </v-list-tile-content>
-        </v-list-tile>  
-      </v-list>
-
-    </v-navigation-drawer>
-
-    <div id="toolbar">
-    <v-toolbar color="#009688" dark fixed app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+    <div id="products-table">
       <v-spacer></v-spacer>
-      <v-btn color="#009688">Logout
-          <v-icon>person</v-icon>
-      </v-btn>
-    </v-toolbar>
-    </div>
-    <main>
-      <router-view></router-view>
-    </main>
+    <v-toolbar flat color="white">
+      <v-toolbar-title>My CRUD</v-toolbar-title>
+      <v-divider
+        class="mx-2"
+        inset
+        vertical
+      ></v-divider>
+      <v-spacer></v-spacer>
+      <v-dialog v-model="dialog" max-width="500px">
+        <template v-slot:activator="{ on }">
+          <v-btn color="primary" dark class="mb-2" v-on="on">New Item</v-btn>
+        </template>
+        <v-card>
+          <v-card-title>
+            <span class="headline">{{ formTitle }}</span>
+          </v-card-title>
 
-    </v-app>
-    
+          <v-card-text>
+            <v-container grid-list-md>
+              <v-layout wrap>
+                <v-flex xs12 sm6 md4>
+                  <v-text-field v-model="editedItem.name" label="Dessert name"></v-text-field>
+                </v-flex>
+                <v-flex xs12 sm6 md4>
+                  <v-text-field v-model="editedItem.calories" label="Calories"></v-text-field>
+                </v-flex>
+                <v-flex xs12 sm6 md4>
+                  <v-text-field v-model="editedItem.fat" label="Fat (g)"></v-text-field>
+                </v-flex>
+                <v-flex xs12 sm6 md4>
+                  <v-text-field v-model="editedItem.carbs" label="Carbs (g)"></v-text-field>
+                </v-flex>
+                <v-flex xs12 sm6 md4>
+                  <v-text-field v-model="editedItem.protein" label="Protein (g)"></v-text-field>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" flat @click="close">Cancel</v-btn>
+            <v-btn color="blue darken-1" flat @click="save">Save</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-toolbar>
+    <v-data-table
+      :headers="headers"
+      :items="desserts"
+      class="elevation-1"
+    >
+      <template v-slot:items="props">
+        <td>{{ props.item.name }}</td>
+        <td class="text-xs-right">{{ props.item.calories }}</td>
+        <td class="text-xs-right">{{ props.item.fat }}</td>
+        <td class="text-xs-right">{{ props.item.carbs }}</td>
+        <td class="text-xs-right">{{ props.item.protein }}</td>
+        <td class="justify-center layout px-0">
+          <v-icon
+            small
+            class="mr-2"
+            @click="editItem(props.item)"
+          >
+            edit
+          </v-icon>
+          <v-icon
+            small
+            @click="deleteItem(props.item)"
+          >
+            delete
+          </v-icon>
+        </td>
+      </template>
+      <template v-slot:no-data>
+        <v-btn color="primary" @click="initialize">Reset</v-btn>
+      </template>
+    </v-data-table>
+  </div>
 </template>
 
 <script>
-   export default {
+
+  export default {
     data: () => ({
       dialog: false,
       headers: [
@@ -97,7 +138,7 @@
       initialize () {
         this.desserts = [
           {
-            name: 'Frozen Yogurt',
+            name: 'Frozen',
             calories: 159,
             fat: 6.0,
             carbs: 24,
@@ -199,33 +240,19 @@
     }
   }
 </script>
-<script>
-export default {
-  data(){
-    return{
-      drawer: false,
-      menuItems: [
-        {icon: 'home', title: 'Home', link: '/home'},
-        {icon: 'shopping_cart', title: 'Products', link: '/products'},
-        {icon: 'contact_mail', title: 'Daily Productions', link: '/dailyproductions'},
-        {icon: 'shopping_cart', title: 'Orders', link: '/orders'},
-        {icon: 'attach_money', title: 'Expenditures', link: '/expenses'},
-        {icon: 'settings', title: 'Account setting', link: '/setting'},
-        {icon: 'person', title: 'Logout', link: '/logout'}
-      ]
-    }
-  }
-}
-</script>
-
 <style>
-#inspire{
-    font-display: robboto;
-    margin-top: 10px;
-    font-size: xx-small;
-    margin-left: 04%;
-}
-.toolbar{
-    font-size: x-small;
+#products-table{
+  margin-top: 50px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
 }
 </style>
+content_copy
+My CRUD
+KitKat	518	26	65	7
+edit
+delete
+Donut	452	25	51	4.9
+edit
+delete
+Honeycomb	408	3.2	87	6.5

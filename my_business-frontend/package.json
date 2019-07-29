@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "laravel-vue-datatable": "^0.3.0",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-router": "^3.0.7",

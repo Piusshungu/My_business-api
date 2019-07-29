@@ -33,8 +33,10 @@
           <v-icon>person</v-icon>
       </v-btn>
     </v-toolbar>
+    
     </div>
     <main>
+      <products-table></products-table>
       <router-view></router-view>
     </main>
 
@@ -42,6 +44,13 @@
 </template>
 
 <script>
+import ProductsTable from './components/ProductsTable.vue';
+export default{
+  name: 'ProductsTable',
+  components: {
+    ProductsTable
+  }
+}
   
 </script>
 <script>

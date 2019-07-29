@@ -4,8 +4,11 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import router from './router/routes'
+import DataTable from 'laravel-vue-datatable';
 
 Vue.productionTip = false;
+
+Vue.use(DataTable);
 
 Vue.use(Vuetify,{
     iconfont: 'mdi'
