@@ -16,8 +16,32 @@ Vue.use(Vuetify,{
 
 Vue.config.productionTip = false;
 
+ /* eslint-disable */
+
 new Vue({
     el: '#app',
     router,
     render: h => h(App)
 }).$mount("#app");
+
+new products-table({
+    el: '#prdoducts-table',
+    data: {
+        items: [],
+        hasError: true,
+        newItems: {'name_of_product': '', 'category': '', 'country': '', 'number_of_products': ''},
+    },
+})
+function createIteam(){
+    var _this = this;
+    var input = this.newItem;
+    if(input['name_of_product'] == '' || input['category'] == '' || input[number_of_products] == '' || input[country] == ''){
+        this.hasError = false;
+    }else{
+        this.hasError = true;
+        axios.post('/vueitems', input).then(function(response){
+            _this.newItem = {'name': ''};
+            _this.getVueItems()
+        });
+    }
+}

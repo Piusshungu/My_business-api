@@ -1,8 +1,8 @@
 <template>
     <div id="products-table">
       <v-spacer></v-spacer>
-    <v-toolbar flat color="white">
-      <v-toolbar-title>My CRUD</v-toolbar-title>
+    <v-toolbar flat color="white" width="500">
+      <v-toolbar-title>Shungu</v-toolbar-title>
       <v-divider
         class="mx-2"
         inset
@@ -11,7 +11,7 @@
       <v-spacer></v-spacer>
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ on }">
-          <v-btn color="primary" dark class="mb-2" v-on="on">New Item</v-btn>
+          <v-btn color="#009688" dark class="mb-2" v-on="on">New Item</v-btn>
         </template>
         <v-card>
           <v-card-title>
@@ -22,7 +22,7 @@
             <v-container grid-list-md>
               <v-layout wrap>
                 <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.name" label="Dessert name"></v-text-field>
+                  <v-text-field v-model="editedItem.name" label="Product name"></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md4>
                   <v-text-field v-model="editedItem.calories" label="Calories"></v-text-field>
@@ -64,12 +64,14 @@
             small
             class="mr-2"
             @click="editItem(props.item)"
+            color="#009688"
           >
             edit
           </v-icon>
           <v-icon
             small
             @click="deleteItem(props.item)"
+            color="red"
           >
             delete
           </v-icon>
@@ -89,15 +91,15 @@
       dialog: false,
       headers: [
         {
-          text: 'Dessert (100g serving)',
+          text: 'Products name',
           align: 'left',
           sortable: false,
           value: 'name'
         },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
+        { text: 'Date modified', value: 'calories' },
+        { text: 'Category', value: 'fat' },
+        { text: 'Current number on stock (g)', value: 'carbs' },
+        { text: 'Country', value: 'protein' },
         { text: 'Actions', value: 'name', sortable: false }
       ],
       desserts: [],
@@ -247,12 +249,4 @@
   
 }
 </style>
-content_copy
-My CRUD
-KitKat	518	26	65	7
-edit
-delete
-Donut	452	25	51	4.9
-edit
-delete
-Honeycomb	408	3.2	87	6.5
+
