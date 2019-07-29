@@ -5,10 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Emadadly\LaravelUuid\Uuids;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Uuids;
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
