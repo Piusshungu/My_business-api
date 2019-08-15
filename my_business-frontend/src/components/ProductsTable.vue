@@ -22,28 +22,27 @@
             <v-container grid-list-md>
               <v-layout wrap>
                 <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.name" label="Product name"></v-text-field>
+                  <v-text-field v-model="editedItem.name" label="Product name" id="	name_of_product"></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.calories" label="Calories"></v-text-field>
+                  <v-text-field v-model="editedItem.calories" label="Product category" id="category"></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.fat" label="Fat (g)"></v-text-field>
+                  <v-text-field v-model="editedItem.carbs" label="Country" id="country"></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.carbs" label="Carbs (g)"></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.protein" label="Protein (g)"></v-text-field>
+                  <v-text-field v-model="editedItem.protein" label="Number of products" id="number_of_products"></v-text-field>
                 </v-flex>
               </v-layout>
             </v-container>
+            <p class="text-center alert alert-danger"
+    v-bind:class="{ hidden: hasError }">Please fill all fields!</p>
           </v-card-text>
 
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="blue darken-1" flat @click="close">Cancel</v-btn>
-            <v-btn color="blue darken-1" flat @click="save">Save</v-btn>
+            <v-btn color="blue darken-1" flat @click.prevent="createIteam()">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -106,17 +105,17 @@
       editedIndex: -1,
       editedItem: {
         name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
+        calories: '',
+        fat: '',
+        carbs: '',
         protein: 0
       },
       defaultItem: {
         name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0
+        calories: '',
+        fat: '',
+        carbs: '',
+        protein: ''
       }
     }),
 

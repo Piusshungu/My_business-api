@@ -39,7 +39,7 @@ function createIteam(){
         this.hasError = false;
     }else{
         this.hasError = true;
-        axios.post('/vueitems', input).then(function(response){
+        axios.post('/productsItems', input).then(function(response){
             _this.newItem = {'name': ''};
             _this.getVueItems()
         });
