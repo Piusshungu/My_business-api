@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Products;
 
 class ProductsItemsController extends Controller
 {
@@ -13,7 +14,8 @@ class ProductsItemsController extends Controller
      */
     public function index()
     {
-        //
+        $displayItems = Products::GetProductsItems();
+        return $displayItems;
     }
 
     /**
@@ -23,7 +25,17 @@ class ProductsItemsController extends Controller
      */
     public function create()
     {
-        //
+        $save_product = new Products([
+            'name_of_product' => $request->get('name_of_product'),
+            'category' => $request->get('category'),
+            'country' => $request->get('country'),
+            'number_of_products' => $request->get('number_of_products')
+        ]);
+        $save_product->save();
+        return response()->json([
+            "message" => 'Product is successfully added',
+            "status_code" => '200'
+        ]);
     }
 
     /**
@@ -34,7 +46,20 @@ class ProductsItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $save_product = new Products([
+            'name_of_product' => $request->get('name_of_product'),
+            'category' => $request->get('category'),
+            'country' => $request->get('country'),
+            'number_of_products' => $request->get('number_of_products')
+        ]);
+        $save_product->save();
+        return response()->json([
+            "message" => 'Product is successfully added',
+            "status_code" => '200'
+        ]);
+
+
+        
     }
 
     /**
@@ -43,10 +68,7 @@ class ProductsItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -54,11 +76,6 @@ class ProductsItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -68,7 +85,11 @@ class ProductsItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+          $update_products = Products::find($id);
+
+          $update_products->update($request->all());
+
+         return response()->json('successfully updated');
     }
 
     /**
@@ -79,6 +100,10 @@ class ProductsItemsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete_products = Products::find($id);
+
+        $delete_products->delete();
+
+       return response()->json('successfully deleted');
     }
 }
