@@ -20,6 +20,5 @@ class ProductsController extends Controller
         $product->number_of_products = $request->number_of_products;
         $product->save();
         return $product;
-
     }
 }

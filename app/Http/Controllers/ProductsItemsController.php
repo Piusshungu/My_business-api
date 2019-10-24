@@ -57,9 +57,6 @@ class ProductsItemsController extends Controller
             "message" => 'Product is successfully added',
             "status_code" => '200'
         ]);
-
-
-        
     }
 
     /**
