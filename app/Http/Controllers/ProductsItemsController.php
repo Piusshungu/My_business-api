@@ -14,7 +14,7 @@ class ProductsItemsController extends Controller
      */
     public function index()
     {
-        $displayItems = Products::GetProductsItems();
+        $displayItems = Products::all();
         return $displayItems;
     }
 

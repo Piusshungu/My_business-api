@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use Emadadly\LaravelUuid\Uuids;
+
 class CreateRoleUserTable extends Migration
 {
     /**
@@ -15,8 +17,9 @@ class CreateRoleUserTable extends Migration
     {
         Schema::create('role_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integal('role_id');
-            $table->intergal('user_id');
+            $table->integer('role_id');
+            $table->uuid('user_id')->index();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
